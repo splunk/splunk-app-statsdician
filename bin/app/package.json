@@ -1,0 +1,15 @@
+{
+  "name": "splunk-app-statstician",
+  "version": "0.1.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Glenn Block",
+  "license": "APACHE2",
+  "dependencies": {
+    "splunk-sdk": "~1.6.0",
+    "statsd": "~0.7.2"
+  }
+}
