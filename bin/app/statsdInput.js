@@ -27,10 +27,12 @@ exports.getScheme = function() {
 }
 
 exports.validateInput = function(definition, done) {
-    var port = parseInt(definition.parameters.port,10);
-    var config = require(path.join(__dirname,'statsdConfig.js'));
-    config.port = port;
-    fs.writeFileSync(path.join(__dirname, 'statsdConfig.js', config));
+    var port = definition.parameters.port;
+    var config = fs.readFileSync(path.join(__dirname, 'statsdConfig.js'), 'utf8');
+    var re = /\{\r*\n*\s*port:\s*(\d{3}\d+)/;
+    var matches = config.match(re);
+    config = config.replace(matches[1], port);
+    fs.writeFileSync(path.join(__dirname, 'statsdConfig.js'), config);
     done();
 }
 

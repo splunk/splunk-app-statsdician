@@ -34,7 +34,7 @@ Optional Variables:
                     negative values mean to use "top" Nth percentile(s) values
                     [%, default: 90]
   flush_counts:     send stats_counts metrics [default: true]
-  keyFlush:         log the most frequently sent keys [object, default: undefined]
+  keyFlush:         log the most frequently sent keys [object, default: $1]
     interval:       how often to log frequent keys [ms, default: 0]
     percent:        percentage of frequent keys to log [%, default: 100]
     log:            location of log file for frequent keys [default: STDOUT]
@@ -89,6 +89,6 @@ Optional Variables:
                          changes. The default is true. Set this to false to disable.
 */
 {
-  port: 8125
+  port: 9100
 , backends: [ "./backends/console", "../../eventWriterBackend" ]
 }
