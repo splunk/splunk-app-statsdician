@@ -68,7 +68,7 @@ Optional Variables:
                     that details other statsd servers to which the received
                     packets should be "repeated" (duplicated to).
                     e.g. [ { host: '10.10.10.10', port: 8125 },
-                           { host: 'observer', port: 88125 } ]
+8126 } ]
   repeaterProtocol: whether to use udp4 or udp6 for repeaters.
                     ["udp4" or "udp6", default: "udp4"]
   histogram:        for timers, an array of mappings of strings (to match metrics) and
@@ -89,6 +89,7 @@ Optional Variables:
                          changes. The default is true. Set this to false to disable.
 */
 {
-  port: 9100
+  port: 8125
+, mgmt_port: 8127
 , backends: [ "./backends/console", "../../eventWriterBackend" ]
 }

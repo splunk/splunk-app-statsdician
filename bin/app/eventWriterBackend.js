@@ -18,7 +18,7 @@ function EventWriterBackend(startupTime, config, emitter){
 
 EventWriterBackend.prototype.flush = function(timestamp, metrics) {
   var time = new Date(timestamp * 1000);
-  console.log('Flushing stats at', time.toString());
+  //console.log('Flushing stats at', time.toString());
 
   var out = {
     counters: metrics.counters,
@@ -48,13 +48,15 @@ EventWriterBackend.prototype.flush = function(timestamp, metrics) {
     event.data = JSON.stringify(out);
   }
 
-  eventWriter.writeEvent(event);
+  writer.writeEvent(event);
 };
 
 EventWriterBackend.prototype.status = function(write) {
+  /*
   ['lastFlush', 'lastException'].forEach(function(key) {
-    write(null, 'console', key, this[key]);
+    write(null, 'eventWriter', key, this[key]);
   }, this);
+*/
 };
 
 exports.init = function(startupTime, config, events) {

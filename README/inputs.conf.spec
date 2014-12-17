@@ -1,4 +1,5 @@
 [statstician://<name>]
-*Collects events via statsd
+*Collects events via StatsD
 
 port = <value>
+mgmt_port = <value>
