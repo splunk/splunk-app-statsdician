@@ -25,7 +25,7 @@ exports.getScheme = function() {
         new Argument ({
             name: "mgmt_port",
             dataType: Argument.dataTypeNumber,
-            description: "Port for StatsD Management (default: 8127)",
+            description: "Port for StatsD Management (default: 8126)",
             requiredOnCreate: false,
             requiredOnEdit: true
         })
@@ -47,7 +47,7 @@ exports.validateInput = function(definition, done) {
     }
 
     if (mgmt_port === "") {
-        mgmt_port = "8127"
+        mgmt_port = "8126"
     }
 
     config = config.replace(matches[1], port);
