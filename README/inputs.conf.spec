@@ -1,4 +1,4 @@
-[statstician://<name>]
+[statsdician://<name>]
 *Collects events via StatsD
 
 port = <value>

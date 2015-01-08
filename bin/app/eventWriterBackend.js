@@ -37,7 +37,6 @@ EventWriterBackend.prototype.flush = function(timestamp, metrics) {
   };
 
   var event = new Event ({
-    sourcetype: "statsd",
     source: "statistician",
     time: time
   });

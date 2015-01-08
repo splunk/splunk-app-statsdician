@@ -9,7 +9,7 @@ var fs = require('fs');
 var path = require('path');
 
 exports.getScheme = function() {
-    var scheme = new Scheme("Statstician");
+    var scheme = new Scheme("Statsdician");
     scheme.description = "Collects metrics from StatsD";
     scheme.useExternalValidation = true;
     scheme.useSingleInstance = true;
