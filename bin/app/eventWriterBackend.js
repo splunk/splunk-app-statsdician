@@ -13,13 +13,10 @@ function EventWriterBackend(startupTime, config, emitter){
 
   // attach
   emitter.on('flush', function(timestamp, metrics) { self.flush(timestamp, metrics); });
-  emitter.on('status', function(callback) { self.status(callback); });
 }
 
 EventWriterBackend.prototype.flush = function(timestamp, metrics) {
   var time = new Date(timestamp * 1000);
-  //console.log('Flushing stats at', time.toString());
-
   var out = {
     counters: metrics.counters,
     timers: metrics.timers,
@@ -37,7 +34,7 @@ EventWriterBackend.prototype.flush = function(timestamp, metrics) {
   };
 
   var event = new Event ({
-    source: "statistician",
+    source: "statsdician",
     time: time
   });
 
@@ -48,14 +45,7 @@ EventWriterBackend.prototype.flush = function(timestamp, metrics) {
   }
 
   writer.writeEvent(event);
-};
 
-EventWriterBackend.prototype.status = function(write) {
-  /*
-  ['lastFlush', 'lastException'].forEach(function(key) {
-    write(null, 'eventWriter', key, this[key]);
-  }, this);
-*/
 };
 
 exports.init = function(startupTime, config, events) {
