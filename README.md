@@ -1,4 +1,23 @@
 statsdician
 ===========
 
-An app for collecting metrics into Splunk using StatsD
+Collect statsd metrics directly in Splunk!
+
+## Overview
+statsdician opens a statsd endpoint on a Splunk forwarder which feeds events directly into Splunk using the new [HTTP Event Collector](http://dev.splunk.com/view/event-collector/SP-CAAAE6M) in Splunk 6.3.
+
+statsdician sends events to Splunk as JSON objects thus allowing them to be easily queried using SPL. There are no props.conf changes required!
+
+## Installing 
+* Clone this repo
+* In the ./bin/app/node_modules folder run `npm install`
+* Copy to your %SPLUNK_HOME%/etc/apps folder. 
+* Restart splunk
+
+## Configuring
+* Enable HTTP Event Collector on your forwarder and create a token. See [here](http://docs.splunk.com/Documentation/Splunk/6.3.0/Data/UsetheHTTPEventCollector).
+* Copy the Token Value to the clipboard.
+* From the menu go to Settings->Data Inputs->statsdician->Add New. Specify the `name` and paste the token into the `hec_token` field. All other fields are optional / can be changed if the defaults are not acceptable.
+* Save the input is saved, you will have a statsd port opened on the statsd_port specified.
+
+
