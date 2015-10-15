@@ -18,7 +18,7 @@ Optional Variables:
   debug:            debug flag [default: false]
   address:          address to listen on [default: 0.0.0.0]
   address_ipv6:     defines if the address is an IPv4 or IPv6 address [true or false, default: false]
-  port:             port to listen for messages on [default: 8125]
+  port:             port to listen for messages on [default: 812555]
   mgmt_address:     address to run the management TCP interface on
                     [default: 0.0.0.0]
   mgmt_port:        port to run the management TCP interface on [default: 8126]
@@ -91,5 +91,5 @@ Optional Variables:
 {
   port: 8125
 , mgmt_port: 8126
-, backends: [ "./backends/console", "../../eventWriterBackend" ]
+, backends: [ "./backends/console", "../../eventCollectorBackend" ]
 }
