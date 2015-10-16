@@ -39,7 +39,7 @@ exports.getScheme = function() {
         new Argument ({
             name: "hec_ssl",
             dataType: Argument.dataTypeBoolean,
-            description: "Enable SSL for HEC? (default: true)",
+            description: "Enable SSL for HEC?",
             requiredOnCreate: false,
             requiredOnEdit: false
         }),
@@ -49,6 +49,13 @@ exports.getScheme = function() {
             description: "Token for HTTP Event Collector",
             requiredOnCreate: true,
             requiredOnEdit: true
+        }),
+        new Argument ({
+            name: "hec_event_per_metric",
+            dataType: Argument.dataTypeBoolean,
+            description: "Create events per metric OR per flush",
+            requiredOnCreate: false,
+            requiredOnEdit: false
         })
     ];
     return scheme;
@@ -83,8 +90,9 @@ exports.streamEvents = function(name, singleInput, eventWriter, done) {
     var hec_port = singleInput.hec_port;
     var hec_ssl = singleInput.hec_ssl == 1 ? true : false;
     var hec_token = singleInput.hec_token;
+    var hec_event_per_metric = singleInput.hec_event_per_metric;
 
-    backend.configure(name, hec_port, hec_ssl, hec_token);
+    backend.configure(name, hec_port, hec_ssl, hec_token, hec_event_per_metric);
     process.argv[2] = path.join(__dirname, '/statsdConfig.js');
     //start StatsD
     var statsd = require(path.join(__dirname, 'node_modules/statsd/stats.js'));
