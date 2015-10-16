@@ -90,7 +90,7 @@ exports.streamEvents = function(name, singleInput, eventWriter, done) {
     var hec_port = singleInput.hec_port;
     var hec_ssl = singleInput.hec_ssl == 1 ? true : false;
     var hec_token = singleInput.hec_token;
-    var hec_event_per_metric = singleInput.hec_event_per_metric;
+    var hec_event_per_metric = singleInput.hec_event_per_metric == 1 ? true : false;
 
     backend.configure(name, hec_port, hec_ssl, hec_token, hec_event_per_metric);
     process.argv[2] = path.join(__dirname, '/statsdConfig.js');

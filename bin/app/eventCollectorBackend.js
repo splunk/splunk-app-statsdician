@@ -50,12 +50,6 @@ EventCollectorBackend.prototype.flush = function(timestamp, metrics) {
           }
           return ret;
         }(metrics.sets));
-      _hec_logger.flush(function(err, resp, body) {
-        // If successful, body will be { text: 'Success', code: 0 }
-        if (err != undefined) {
-          throw err;
-        }
-      });
     }
     else {
       var out = {
@@ -80,7 +74,20 @@ EventCollectorBackend.prototype.flush = function(timestamp, metrics) {
           throw err;
         }
       });
+      _hec_logger.flush(function(err, resp, body) {
+        // If successful, body will be { text: 'Success', code: 0 }
+        if (err != undefined) {
+          throw err;
+        }
+      });
     }
+
+    _hec_logger.flush(function(err, resp, body) {
+      // If successful, body will be { text: 'Success', code: 0 }
+      if (err != undefined) {
+        throw err;
+      }
+    });
   }
 };
 
