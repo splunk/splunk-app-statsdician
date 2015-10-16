@@ -39,6 +39,6 @@ Below are examples of how the payloads will look:
 ![KVP](https://raw.githubusercontent.com/splunk/splunk-app-statsdician/images/kvp.jpeg)
 
 ## License
-splunkrepl is licensed under the Apache License 2.0. Details can be found in the file LICENSE.
+statsdician is licensed under the Apache License 2.0. Details can be found in the file LICENSE.
 
 
