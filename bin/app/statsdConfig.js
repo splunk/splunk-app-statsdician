@@ -67,8 +67,8 @@ Optional Variables:
   repeater:         an array of hashes of the for host: and port:
                     that details other statsd servers to which the received
                     packets should be "repeated" (duplicated to).
-                    e.g. [ { host: '10.10.10.10', port: 8125 },
-8126 } ]
+                    e.g. [ { host: '10.10.10.10', port: undefined5 },
+undefined6 } ]
   repeaterProtocol: whether to use udp4 or udp6 for repeaters.
                     ["udp4" or "udp6", default: "udp4"]
   histogram:        for timers, an array of mappings of strings (to match metrics) and
@@ -89,7 +89,7 @@ Optional Variables:
                          changes. The default is true. Set this to false to disable.
 */
 {
-  port: 8125
-, mgmt_port: 8126
+  port: 8125    
+, mgmt_port: 8126     
 , backends: [ "./backends/console", "../../eventCollectorBackend" ]
 }
