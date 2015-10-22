@@ -61,10 +61,7 @@ exports.getScheme = function() {
     return scheme;
 }
 
-exports.validateInput = function(definition, done) {
-    var port = definition.parameters.statsd_port;
-    var mgmt_port = definition.parameters.mgmt_port;
-
+function writePorts(port, mgmt_port) {
     var config = fs.readFileSync(path.join(__dirname, 'statsdConfig.js'), 'utf8');
     
     var rePorts = /\{\r*\n*\s*port:\s*(\d+).+\r*\n*.+mgmt_port:\s(\d+)/;
@@ -82,12 +79,20 @@ exports.validateInput = function(definition, done) {
     config = config.replace(matches[2], mgmt_port);
 
     fs.writeFileSync(path.join(__dirname, 'statsdConfig.js'), config);
-    done();
 }
 
 exports.streamEvents = function(name, singleInput, eventWriter, done) {
     //pass in the writer to the backend
+    var port = singleInput.port;
+    var mgmt_port = singleInput.mgmt_port;
     var hec_port = singleInput.hec_port;
+
+    writePorts(port, mgmt_port);
+
+    if (hec_port === "") {
+        hec_port = "8088";
+    }
+
     var hec_ssl = singleInput.hec_ssl == 1 ? true : false;
     var hec_token = singleInput.hec_token;
     var hec_event_per_metric = singleInput.hec_event_per_metric == 1 ? true : false;
