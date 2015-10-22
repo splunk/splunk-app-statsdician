@@ -18,10 +18,10 @@ Optional Variables:
   debug:            debug flag [default: false]
   address:          address to listen on [default: 0.0.0.0]
   address_ipv6:     defines if the address is an IPv4 or IPv6 address [true or false, default: false]
-  port:             port to listen for messages on [default: 812555555]
+  port:             port to listen for messages on [default: undefined555555]
   mgmt_address:     address to run the management TCP interface on
                     [default: 0.0.0.0]
-  mgmt_port:        port to run the management TCP interface on [default: 8126]
+  mgmt_port:        port to run the management TCP interface on [default: undefined6]
   title:            Allows for overriding the process title. [default: statsd]
                     if set to false, will not override the process title and let the OS set it.
                     The length of the title has to be less than or equal to the binary name + cli arguments
