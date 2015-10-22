@@ -64,7 +64,7 @@ exports.getScheme = function() {
 function writePorts(port, mgmt_port) {
     var config = fs.readFileSync(path.join(__dirname, 'statsdConfig.js'), 'utf8');
     
-    var rePorts = /\{\r*\n*\s*port:\s*(\d+).+\r*\n*.+mgmt_port:\s(\d+)/;
+    var rePorts = /\{\r*\n*.+port:\s(\d+).+\r*\n*.+mgmt_port:\s(\d+)/;
     var matches = config.match(rePorts);
 
     if (port === "") {
@@ -83,7 +83,7 @@ function writePorts(port, mgmt_port) {
 
 exports.streamEvents = function(name, singleInput, eventWriter, done) {
     //pass in the writer to the backend
-    var port = singleInput.port;
+    var port = singleInput.statsd_port;
     var mgmt_port = singleInput.mgmt_port;
     var hec_port = singleInput.hec_port;
 
